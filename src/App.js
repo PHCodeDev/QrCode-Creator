@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { QRCodeCanvas } from "qrcode.react";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const [url, setUrl] = useState("");
+  const [showQRCode, setShowQRCode] = useState(false);
+
+  const handleChange = (event) => {
+    setUrl(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (url) {
+      setShowQRCode(true);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1>Gerador de QR Code</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Digite o link aqui"
+          value={url}
+          onChange={handleChange}
+          className="input"
+        />
+        <button type="submit" className="button">
+          Gerar QR Code
+        </button>
+      </form>
+      {showQRCode && (
+        <div className="qr-code">
+          <a href={url} target="_blank" rel="noopener noreferrer">
+            <QRCodeCanvas value={url} />
+          </a>
+        </div>
+      )}
     </div>
   );
-}
+};
 
 export default App;

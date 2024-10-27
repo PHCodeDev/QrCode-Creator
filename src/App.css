@@ -1,38 +1,103 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  min-height: 100vh;
+  background-color: #282c34;
   color: white;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.App-link {
-  color: #61dafb;
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.input {
+  padding: 10px;
+  width: 300px;
+  border: 2px solid #61dafb;
+  border-right: none; 
+  border-radius: 4px 0 0 4px; 
+  outline: none;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #61dafb;
+  color: #282c34;
+  font-weight: bold;
+  border: 2px solid #61dafb;
+  border-left: none; 
+  border-radius: 0 4px 4px 0; 
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.button:hover {
+  background-color: #4a90e2;
+  color: aliceblue;
+  transform: scale(1.05);
+}
+
+.qr-code {
+  margin-top: 28px;
+  padding: 20px;
+  background-color: white;
+  border: 4px solid #61dafb;
+  border-radius: 16px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 0.8s ease-in-out;
+  transition: transform 0.3s;
+}
+
+.qr-code:hover {
+  transform: scale(1.05);
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
+
+
+@media (max-width: 480px) {
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 320px; 
+    margin: 0 auto; 
+  }
+
+  .input {
+    width: 94%;
+    border-radius: 4px;
+    margin: 5px 0;
+  }
+
+  .button {
+    width: 100%; 
+    border-radius: 4px; 
+    margin: 5px 0; 
+    text-align: center; 
+  }
+
+  .qr-code {
+    max-width: 90%;
+  }
+}
+
